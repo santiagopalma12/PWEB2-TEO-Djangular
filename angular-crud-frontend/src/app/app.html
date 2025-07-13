@@ -1,21 +1,23 @@
-<!-- src/app/app.component.html -->
-<div style="text-align:center">
-  <h1>
-    Aplicación de Películas con Django y Angular
-  </h1>
-</div>
+<!-- src/app/app.html (usando la nueva sintaxis) -->
+
+<!-- ... tu título ... -->
 
 <h2>Lista de Películas desde la API:</h2>
 
 <ul>
-  <li *ngFor="let movie of movies">
-    <h3>{{ movie.id }}: {{ movie.title }}</h3>
-    <p><strong>Descripción:</strong> {{ movie.desc }}</p>
-    <p><strong>Año:</strong> {{ movie.year }}</p>
-  </li>
+  <!-- Usando @for en lugar de *ngFor -->
+  @for (movie of movies; track movie.id) {
+    <li>
+      <h3>{{ movie.id }}: {{ movie.title }}</h3>
+      <p><strong>Descripción:</strong> {{ movie.desc }}</p>
+      <p><strong>Año:</strong> {{ movie.year }}</p>
+    </li>
+  }
 </ul>
 
-<!-- Mensaje si no hay películas -->
-<div *ngIf="movies.length === 0">
-  <p>Cargando películas o no hay datos disponibles...</p>
-</div>
+<!-- Usando @if en lugar de *ngIf -->
+@if (movies.length === 0) {
+  <div>
+    <p>Cargando películas o no hay datos disponibles...</p>
+  </div>
+}
