@@ -1,0 +1,93 @@
+/* Fondo animado estilo neón/cine */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(-45deg, #1f1c2c, #928dab, #2c3e50, #000000);
+  background-size: 400% 400%;
+  animation: fondoAnimado 15s ease infinite;
+  color: #fff;
+  min-height: 100vh;
+}
+
+/* Animación del fondo */
+@keyframes fondoAnimado {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+h2 {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 2.2rem;
+  color: #f1c40f;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  animation: aparecer 1.2s ease-in-out;
+}
+
+/* Animación para entrada */
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  list-style: none;
+  padding: 2rem;
+  margin: 0;
+}
+
+li {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: aparecer 0.8s ease both;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+li:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+}
+
+h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+  color: #f39c12;
+}
+
+p {
+  margin: 0.3rem 0;
+  font-size: 1rem;
+  color: #ecf0f1;
+}
+
+strong {
+  color: #e67e22;
+}
+
+div {
+  text-align: center;
+  margin-top: 2rem;
+  font-style: italic;
+  color: #bdc3c7;
+  animation: aparecer 1.2s ease-in;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  ul {
+    padding: 1rem;
+  }
+}
