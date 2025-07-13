@@ -1,23 +1,30 @@
-// src/app/app.module.ts
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-// --> Importa HttpClientModule
-import { HttpClientModule } from '@angular/common/http';
+// src/app/app.component.ts
+import { Component, OnInit } from '@angular/core';
+import { ApiService, Movie } from './api'; 
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    // --> Añádelo aquí
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.html',
+  styleUrls: ['./app.css']
 })
-export class AppModule { }
+export class AppComponent implements OnInit { 
+  
+  movies: Movie[] = [];
+
+  constructor(private api: ApiService) {}
+
+  ngOnInit() {
+    this.getMovies();
+  }
+
+  getMovies = () => {
+    this.api.getAllMovies().subscribe(
+      data => {
+        this.movies = data;
+      },
+      error => {
+        console.log("Ocurrió un error al llamar a la API: ", error);
+      }
+    );
+  }
+}
